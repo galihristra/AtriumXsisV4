@@ -1,0 +1,44 @@
+Timesheet data :
+ID		GUID
+EmployeeID	VARCHAR2
+WorkDate	DATETIME
+Status		VARCHAR2
+StartWork	DATETIME
+EndWork		DATETIME
+OTStart		DATETIME
+OTEnd		DATETIME
+Description	VARCHAR2
+CreateDate	DATETIME
+ModifyDate	DATETIME
+
+Employee Data :
+ID		VARCHAR2
+Name		VARCHAR2
+Address		VARCHAR2
+Email		VARCHAR2
+PhoneNumber	VARCHAR2
+Salary		NUMBER
+PositionID	VARCHAR2
+Bootcamp	VARCHAR2
+ProjectID	VARCHAR2
+CreateDate	DATETIME
+CreateBy	VARCHAR2
+ModifyDate	DATETIME
+ModifyBy	VARCHAR2
+
+Position Data :
+ID		VARCHAR2
+Position	VARCHAR2
+CreateDate	DATETIME
+CreateBy	VARCHAR2
+ModifyDate	DATETIME
+ModifyBy	VARCHAR2
+
+Project Data :
+ID		VARCHAR2
+ClientName	VARCHAR2
+ClientAddress	VARCHAR2
+CreateDate	DATETIME
+CreateBy	VARCHAR2
+ModifyDate	DATETIME
+ModifyBy	VARCHAR2
