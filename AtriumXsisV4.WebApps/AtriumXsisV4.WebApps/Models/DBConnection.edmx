@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="XsisAtriumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EMPLOYEES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="255" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="PHONENUMBER" Type="varchar" MaxLength="100" />
+          <Property Name="SALARY" Type="int" />
+          <Property Name="POSITIONID" Type="varchar" MaxLength="5" />
+          <Property Name="BOOTCAMP" Type="varchar" MaxLength="5" />
+          <Property Name="PROJECTID" Type="varchar" MaxLength="10" />
+          <Property Name="DCREA" Type="datetime" />
+          <Property Name="VCREA" Type="varchar" MaxLength="20" />
+          <Property Name="DMODI" Type="datetime" />
+          <Property Name="VMODI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="POSITIONS">
+          <Key>
+            <PropertyRef Name="POSITIONID" />
+          </Key>
+          <Property Name="POSITIONID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="POSITION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DCREA" Type="datetime" />
+          <Property Name="VCREA" Type="varchar" MaxLength="20" />
+          <Property Name="DMODI" Type="datetime" />
+          <Property Name="VMODI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PROJECTS">
+          <Key>
+            <PropertyRef Name="PROJECTID" />
+          </Key>
+          <Property Name="PROJECTID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="VCLNAME" Type="varchar" MaxLength="255" />
+          <Property Name="VCLADDRESS" Type="varchar" MaxLength="255" />
+          <Property Name="DCREA" Type="datetime" />
+          <Property Name="VCREA" Type="varchar" MaxLength="20" />
+          <Property Name="DMODI" Type="datetime" />
+          <Property Name="VMODI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TIMESHEETS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMPLOYEEID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DWORKDATE" Type="datetime" Nullable="false" />
+          <Property Name="VSTATUS" Type="varchar" MaxLength="2" />
+          <Property Name="DSTARTWORK" Type="datetime" Nullable="false" />
+          <Property Name="DENDWORK" Type="datetime" Nullable="false" />
+          <Property Name="DSTARTOT" Type="datetime" />
+          <Property Name="DENDOT" Type="datetime" />
+          <Property Name="VDESCRIPTION" Type="varchar" MaxLength="255" />
+          <Property Name="DCREA" Type="datetime" />
+          <Property Name="VCREA" Type="varchar" MaxLength="20" />
+          <Property Name="DMODI" Type="datetime" />
+          <Property Name="VMODI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityContainer Name="XsisAtriumModelStoreContainer">
+          <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POSITIONS" EntityType="Self.POSITIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECTS" EntityType="Self.PROJECTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIMESHEETS" EntityType="Self.TIMESHEETS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="XsisAtriumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONENUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SALARY" Type="Int32" />
+          <Property Name="POSITIONID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="BOOTCAMP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PROJECTID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DCREA" Type="DateTime" Precision="3" />
+          <Property Name="VCREA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DMODI" Type="DateTime" Precision="3" />
+          <Property Name="VMODI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="POSITION" Relationship="XsisAtriumModel.EMPLOYEEPOSITION" FromRole="EMPLOYEE" ToRole="POSITION" />
+          <NavigationProperty Name="PROJECT" Relationship="XsisAtriumModel.EMPLOYEEPROJECT" FromRole="EMPLOYEE" ToRole="PROJECT" />
+        </EntityType>
+        <EntityType Name="POSITION">
+          <Key>
+            <PropertyRef Name="POSITIONID" />
+          </Key>
+          <Property Name="POSITIONID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VPOSNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DCREA" Type="DateTime" Precision="3" />
+          <Property Name="VCREA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DMODI" Type="DateTime" Precision="3" />
+          <Property Name="VMODI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="XsisAtriumModel.EMPLOYEEPOSITION" FromRole="POSITION" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="PROJECTID" />
+          </Key>
+          <Property Name="PROJECTID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VCLNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VCLADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DCREA" Type="DateTime" Precision="3" />
+          <Property Name="VCREA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DMODI" Type="DateTime" Precision="3" />
+          <Property Name="VMODI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="XsisAtriumModel.EMPLOYEEPROJECT" FromRole="PROJECT" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="TIMESHEET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYEEID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DWORKDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VSTATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DSTARTWORK" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DENDWORK" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DSTARTOT" Type="DateTime" Precision="3" />
+          <Property Name="DENDOT" Type="DateTime" Precision="3" />
+          <Property Name="VDESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DCREA" Type="DateTime" Precision="3" />
+          <Property Name="VCREA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DMODI" Type="DateTime" Precision="3" />
+          <Property Name="VMODI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="XsisAtriumModel.EMPLOYEETIMESHEET" FromRole="TIMESHEET" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityContainer Name="XsisAtriumEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="POSITIONS" EntityType="Self.POSITION" />
+          <EntitySet Name="PROJECTS" EntityType="Self.PROJECT" />
+          <EntitySet Name="TIMESHEETS" EntityType="Self.TIMESHEET" />
+          <AssociationSet Name="EMPLOYEETIMESHEET" Association="XsisAtriumModel.EMPLOYEETIMESHEET">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEES" />
+            <End Role="TIMESHEET" EntitySet="TIMESHEETS" />
+          </AssociationSet>
+          <AssociationSet Name="EMPLOYEEPOSITION" Association="XsisAtriumModel.EMPLOYEEPOSITION">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEES" />
+            <End Role="POSITION" EntitySet="POSITIONS" />
+          </AssociationSet>
+          <AssociationSet Name="EMPLOYEEPROJECT" Association="XsisAtriumModel.EMPLOYEEPROJECT">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEES" />
+            <End Role="PROJECT" EntitySet="PROJECTS" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="EMPLOYEETIMESHEET">
+          <End Type="XsisAtriumModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="1" />
+          <End Type="XsisAtriumModel.TIMESHEET" Role="TIMESHEET" Multiplicity="*" />
+        </Association>
+        <Association Name="EMPLOYEEPOSITION">
+          <End Type="XsisAtriumModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="1" />
+          <End Type="XsisAtriumModel.POSITION" Role="POSITION" Multiplicity="1" />
+        </Association>
+        <Association Name="EMPLOYEEPROJECT">
+          <End Type="XsisAtriumModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="1" />
+          <End Type="XsisAtriumModel.PROJECT" Role="PROJECT" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="XsisAtriumModelStoreContainer" CdmEntityContainer="XsisAtriumEntities">
+          <EntitySetMapping Name="EMPLOYEES">
+            <EntityTypeMapping TypeName="XsisAtriumModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="POSITIONID" ColumnName="POSITIONID" />
+                <ScalarProperty Name="BOOTCAMP" ColumnName="BOOTCAMP" />
+                <ScalarProperty Name="PROJECTID" ColumnName="PROJECTID" />
+                <ScalarProperty Name="DCREA" ColumnName="DCREA" />
+                <ScalarProperty Name="VCREA" ColumnName="VCREA" />
+                <ScalarProperty Name="DMODI" ColumnName="DMODI" />
+                <ScalarProperty Name="VMODI" ColumnName="VMODI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSITIONS">
+            <EntityTypeMapping TypeName="XsisAtriumModel.POSITION">
+              <MappingFragment StoreEntitySet="POSITIONS">
+                <ScalarProperty Name="POSITIONID" ColumnName="POSITIONID" />
+                <ScalarProperty Name="VPOSNAME" ColumnName="POSITION" />
+                <ScalarProperty Name="DCREA" ColumnName="DCREA" />
+                <ScalarProperty Name="VCREA" ColumnName="VCREA" />
+                <ScalarProperty Name="DMODI" ColumnName="DMODI" />
+                <ScalarProperty Name="VMODI" ColumnName="VMODI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECTS">
+            <EntityTypeMapping TypeName="XsisAtriumModel.PROJECT">
+              <MappingFragment StoreEntitySet="PROJECTS">
+                <ScalarProperty Name="PROJECTID" ColumnName="PROJECTID" />
+                <ScalarProperty Name="VCLNAME" ColumnName="VCLNAME" />
+                <ScalarProperty Name="VCLADDRESS" ColumnName="VCLADDRESS" />
+                <ScalarProperty Name="DCREA" ColumnName="DCREA" />
+                <ScalarProperty Name="VCREA" ColumnName="VCREA" />
+                <ScalarProperty Name="DMODI" ColumnName="DMODI" />
+                <ScalarProperty Name="VMODI" ColumnName="VMODI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIMESHEETS">
+            <EntityTypeMapping TypeName="XsisAtriumModel.TIMESHEET">
+              <MappingFragment StoreEntitySet="TIMESHEETS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+                <ScalarProperty Name="DWORKDATE" ColumnName="DWORKDATE" />
+                <ScalarProperty Name="VSTATUS" ColumnName="VSTATUS" />
+                <ScalarProperty Name="DSTARTWORK" ColumnName="DSTARTWORK" />
+                <ScalarProperty Name="DENDWORK" ColumnName="DENDWORK" />
+                <ScalarProperty Name="DSTARTOT" ColumnName="DSTARTOT" />
+                <ScalarProperty Name="DENDOT" ColumnName="DENDOT" />
+                <ScalarProperty Name="VDESCRIPTION" ColumnName="VDESCRIPTION" />
+                <ScalarProperty Name="DCREA" ColumnName="DCREA" />
+                <ScalarProperty Name="VCREA" ColumnName="VCREA" />
+                <ScalarProperty Name="DMODI" ColumnName="DMODI" />
+                <ScalarProperty Name="VMODI" ColumnName="VMODI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
